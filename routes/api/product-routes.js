@@ -7,15 +7,24 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 router.get('/', async (req, res) => {
   const products = await Product.findAll();
   res.status(200).json(products);
-  // find all products
-  // be sure to include its associated Category and Tag data
+
 });
 
+  // find all products
+  // be sure to include its associated Category and Tag data
+
 // get one product
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
+  const product = await Product.findOne(
+    { where: { id: req.params.id}}
+    );
+  res.status(200).json(product);
+
+});
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
-});
+
+
 
 // create new product
 router.post('/', (req, res) => {
@@ -92,7 +101,26 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
+  Product.destroy({
+    where: { id: req.params.id }
+  })
+   .then(deletedProduct => {
+      res.status(200).json(deletedProduct);
+    })
+   .catch(err => res.json(err));
+// delete a product by its `id` value
 });
 
 module.exports = router;
+
+
+// //router.put(‘/book/:bookId’, function (req, res, next) {
+//  Book.update(
+//   {title: req.body.title},
+//   {where: req.params.bookId}
+// )
+// .then(function(rowsUpdated) {
+//   res.json(rowsUpdated)
+// })
+// .catch(next)
+// })
