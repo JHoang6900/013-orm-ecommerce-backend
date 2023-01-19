@@ -40,15 +40,18 @@ router.get("/:id", async (req, res) => {
 
   router.put("/:id", async (req, res) => {
     try {
-      const updatedTag = await Tag.findByIdAndUpdate(
-        req.params.id,
-        req.body
+      const updatedTag = await Tag.update(
+        req.body, 
+        {where: {id: req.params.id}}
       );
-      res.status(200).json(updatedTag);
+      if (!updatedTag[0]) {
+        res.status(404).json({ message: "No tag found with this id" });
+      } else {
+        res.status(200).json(updatedTag);
+      }
     } catch (err) {
       res.status(500).json(err);
     }
-// update a tag's name  by its `id` value
   });
       
 
