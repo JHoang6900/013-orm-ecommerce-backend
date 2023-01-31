@@ -18,7 +18,7 @@
 ## Submission
 
 The following animation shows the application's routes for Products:
-https://github.com/JHoang6900/013-orm-ecommerce-backend/blob/main/products.gif
+![](https://github.com/JHoang6900/013-orm-ecommerce-backend/blob/main/products.gif)
 
 The following animation shows the application's routes for Categories:
 ![](https://github.com/JHoang6900/013-orm-ecommerce-backend/blob/main/categories.gif)
@@ -29,3 +29,4 @@ The following animation shows the application's routes for Tags:
 
 
 The URL of the GitHub repository: 
+https://github.com/JHoang6900/013-orm-ecommerce-backend
